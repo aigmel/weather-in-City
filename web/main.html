@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>Laika Apstākļi</title>
+
+    <!-- eel.js failam jābūt pieejamam -->
+    <script src="eel.js"></script>
+    <link rel="icon" type="image/png" href="/Sun.png">
+
+    <link rel="stylesheet" href="main.css">
+    <!-- Salabots fonts URL -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Ievades lauks pilsētas ievadei -->
+    <input id="location" type="text" placeholder="Ievadi valsts un pilsētas nosaukumu" required=""
+    value="Rīga, Latvija">
+
+    <!-- Poga laika apstākļu parādīšanai -->
+    <button id="show">Uzzināt Laiku</button>
+
+    <!-- Pareizi izmantots id="info" -->
+    <div id="info"></div>
+
+    <!-- jQuery bibliotēkas pievienošana -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        // Rakstām JS kodu Python funkcijas izsaukšanai
+        async function display_weather() {
+            let place = document.getElementById('location').value;
+
+            // Izsaucam get_weather funkciju no Python koda
+            let res = await eel.get_weather(place)();
+            document.getElementById('info').innerHTML = res;
+        }
+
+        // Uz click pogas attēlojam laika apstākļus
+        jQuery('#show').on('click', function() {
+            display_weather();
+        });
+    </script>
+
+</body>
+</html>
