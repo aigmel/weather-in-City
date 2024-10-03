@@ -8,7 +8,7 @@ eel.init('web')
 # Python funkcija, ko sauc JS kods
 @eel.expose
 def get_weather(city):
-    owm = pyowm.OWM("70f9e95c957112dced3aef325106a2b5")  # Tava API atslēga
+    owm = pyowm.OWM("api_key")  # Tava API atslēga
     mgr = owm.weather_manager()
 
     try:
